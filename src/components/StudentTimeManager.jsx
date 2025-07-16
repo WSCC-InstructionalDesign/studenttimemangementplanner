@@ -28,7 +28,7 @@ const StudentTimeManager = () => {
     { id: 'social', name: 'Social/Family/Friends', color: 'bg-purple-500', defaultHours: 8, icon: Users },
     { id: 'financial', name: 'Financial Management', color: 'bg-cyan-500', defaultHours: 2, icon: DollarSign },
     { id: 'class', name: 'Class', color: 'bg-blue-500', defaultHours: 15, icon: BookOpen },
-    { id: 'studying', name: 'Studying', color: 'bg-emerald-500', defaultHours: 30, icon: Book },
+    { id: 'studying', name: 'Studying', color: 'bg-emerald-500', defaultHours: 0, icon: Book },
     { id: 'leisure', name: 'Leisure/Hobbies', color: 'bg-rose-500', defaultHours: 10, icon: Gamepad2 },
     { id: 'commuting', name: 'Commuting', color: 'bg-gray-500', defaultHours: 5, icon: Car },
     { id: 'errands', name: 'Errands', color: 'bg-amber-500', defaultHours: 3, icon: ShoppingCart }
@@ -594,9 +594,11 @@ const StudentTimeManager = () => {
                       </div>
                       <div className="flex-1">
                         <div className="font-medium text-gray-700">{category.name}</div>
-                        <div className="text-sm text-gray-500">
-                          Suggested: {category.defaultHours}h/week
-                        </div>
+                        {category.id === 'sleep' && (
+                          <div className="text-sm text-gray-500">
+                            Suggested: {category.defaultHours}h/week
+                          </div>
+                        )}
                       </div>
                     </label>
                     <input
@@ -616,7 +618,7 @@ const StudentTimeManager = () => {
                     </div>
                     {category.id === 'studying' && (
                       <div className="mt-2 text-xs text-blue-600 bg-blue-50 p-2 rounded">
-                        💡 Tip: Generally 2-3 hours of study per credit hour. 
+                        💡 Tip: Generally 2-3 hours of study per credit hour per week. Example: 15 credit hours = 30-45 hours of study per week.
                         {classSchedule.length > 0 && ` Recommended: ${calculateStudyHours()}h based on your classes`}
                       </div>
                     )}
