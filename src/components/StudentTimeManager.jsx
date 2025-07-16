@@ -606,7 +606,7 @@ const StudentTimeManager = () => {
                       type="number"
                       min="0"
                       max="168"
-                      value={currentValue}
+                      value={currentValue === 0 ? '' : currentValue}
                       onChange={(e) => handleEstimationChange(category.id, e.target.value)}
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-base"
                       placeholder="0"
